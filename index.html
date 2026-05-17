@@ -6,14 +6,11 @@
 
   <title>Recrutement transporteur Wakëvé</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-
     :root{
       --bg:#f5f7fb;
       --text:#0f172a;
@@ -38,7 +35,6 @@
       radial-gradient(circle at top left, rgba(14,165,233,.12), transparent 28%),
       radial-gradient(circle at bottom right, rgba(2,132,199,.08), transparent 25%),
       var(--bg);
-
       color:var(--text);
       min-height:100vh;
       overflow:hidden;
@@ -95,7 +91,7 @@
       width:100%;
       height:8px;
       background:#e8eef7;
-      border-radius:999px;
+      border-radius999px;
       overflow:hidden;
     }
 
@@ -126,7 +122,6 @@
         opacity:0;
         transform:translateX(24px);
       }
-
       to{
         opacity:1;
         transform:translateX(0);
@@ -352,605 +347,290 @@
       max-width:760px;
     }
 
+    /* ==========================================================================
+       MEDIA QUERIES - OPTIMISATION MOBILE SÉCURISÉE
+       ========================================================================== */
     @media(max-width:768px){
-
       body{
         overflow:auto;
       }
 
+      .app {
+        padding: 12px;
+        min-height: 100vh;
+        align-items: flex-start; /* Évite l'écrasement sur les petits écrans */
+      }
+
+      .shell {
+        border-radius: 24px;
+      }
+
       .screen{
-        padding:40px 24px 120px;
-        min-height:calc(100vh - 90px);
+        padding: 30px 20px 140px; /* Espace suffisant pour le bloc navigation */
+        max-height: calc(100vh - 100px);
+        overflow-y: auto; /* Rend la zone interne entièrement scrollable */
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start; /* Aligne le contenu en haut pour le défilement */
+      }
+
+      .screen.active {
+        display: flex;
+      }
+
+      /* Ajustement spécifique des listes d'options pour l'ergonomie mobile */
+      .choices, .checkbox-grid {
+        gap: 12px;
+        width: 100%;
+        padding-bottom: 10px;
+      }
+
+      .choice label {
+        padding: 16px 18px; /* Réduction de la taille globale des boutons */
+        border-radius: 16px;
+        font-size: 1rem;
+      }
+
+      .badge {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+        flex-shrink: 0; /* Évite la déformation de la pastille */
       }
 
       .navigation{
-        left:24px;
-        right:24px;
+        position: absolute;
+        left:20px;
+        right:20px;
+        bottom:20px;
         flex-direction:column;
         align-items:stretch;
+        background: rgba(255, 255, 255, 0.9); /* Effet de flou en arrière-plan des boutons */
+        backdrop-filter: blur(8px);
+        padding: 10px 0 0 0;
       }
 
       .btn{
         width:100%;
+        padding: 14px 20px;
       }
 
       .topbar{
-        padding:18px 20px;
+        padding:15px 20px;
       }
 
       .logo{
         width:95px;
       }
+      
+      .progress-wrap {
+        width: 140px;
+      }
     }
-
   </style>
 </head>
 
 <body>
 
 <div class="app">
-
   <div class="shell">
 
-    <!-- HEADER -->
     <div class="topbar">
-
-      <img
-        src="assets/logo-wakeve.png"
-        alt="Wakëvé"
-        class="logo"
-      >
-
+      <img src="assets/logo-wakeve.png" alt="Wakëvé" class="logo">
       <div class="progress-wrap">
-
-        <div class="progress-text" id="progressText">
-          Accueil
-        </div>
-
+        <div class="progress-text" id="progressText">Accueil</div>
         <div class="progress">
           <div class="progress-bar" id="progressBar"></div>
         </div>
-
       </div>
-
     </div>
 
-    <!-- FORM -->
     <form id="form">
 
-      <!-- WELCOME -->
       <section class="screen welcome active" data-step="welcome">
-
-        <img
-          src="assets/logo-wakeve.png"
-          class="welcome-logo"
-          alt="Wakëvé"
-        >
-
-        <div class="eyebrow">
-          Transport & Logistique
-        </div>
-
-        <h1>
-          Recrutement transporteur Wakëvé
-        </h1>
-
-        <p class="subtitle">
-          Rejoignez notre réseau de partenaires transporteurs
-          en quelques étapes simples.
-        </p>
-
+        <img src="assets/logo-wakeve.png" class="welcome-logo" alt="Wakëvé">
+        <div class="eyebrow">Transport & Logistique</div>
+        <h1>Un partenariat gagnant-gagnant</h1>
+        <p class="subtitle">Rejoignez notre réseau de partenaires transporteurs en quelques étapes simples.</p>
         <div style="margin-top:40px;">
-          <button
-            type="button"
-            class="btn btn-primary"
-            id="startBtn"
-          >
-            Commencer →
-          </button>
+          <button type="button" class="btn btn-primary" id="startBtn">Commencer →</button>
         </div>
-
       </section>
 
-      <!-- Q1 -->
       <section class="screen" data-step="1">
-
         <div class="question-number">Question 1</div>
-
-        <h2 class="question-title">
-          Quel est le nom de votre société ?
-        </h2>
-
-        <input
-          type="text"
-          class="input"
-          name="nom_societe"
-          placeholder="Ex: Transit Afrique Services"
-          required
-        >
-
+        <h2 class="question-title">Quel est le nom de votre société ?</h2>
+        <input type="text" class="input" name="nom_societe" placeholder="Ex: Transit Afrique Services" required>
         <div class="navigation">
-
-          <div class="hint">
-            Appuyez sur Entrée pour continuer
-          </div>
-
-          <button type="button" class="btn btn-primary next">
-            Suivant →
-          </button>
-
+          <div class="hint">Appuyez sur Entrée pour continuer</div>
+          <button type="button" class="btn btn-primary next">Suivant →</button>
         </div>
-
       </section>
 
-      <!-- Q2 -->
       <section class="screen" data-step="2">
-
         <div class="question-number">Question 2</div>
-
-        <h2 class="question-title">
-          Nom de celui qui remplit
-        </h2>
-
-        <input
-          type="text"
-          class="input"
-          name="nom_repondant"
-          placeholder="Votre nom"
-          required
-        >
-
+        <h2 class="question-title">Nom de celui qui remplit</h2>
+        <input type="text" class="input" name="nom_repondant" placeholder="Votre nom" required>
         <div class="navigation">
-
-          <button type="button" class="btn btn-secondary prev">
-            ← Retour
-          </button>
-
-          <button type="button" class="btn btn-primary next">
-            Suivant →
-          </button>
-
+          <button type="button" class="btn btn-secondary prev">← Retour</button>
+          <button type="button" class="btn btn-primary next">Suivant →</button>
         </div>
-
       </section>
 
-      <!-- Q3 -->
       <section class="screen" data-step="3">
-
         <div class="question-number">Question 3</div>
-
-        <h2 class="question-title">
-          Quel est votre numéro WhatsApp ?
-        </h2>
-
-        <input
-          type="tel"
-          class="input"
-          name="whatsapp"
-          placeholder="+221 XX XXX XX XX"
-          required
-        >
-
+        <h2 class="question-title">Quel est votre numéro WhatsApp ?</h2>
+        <input type="tel" class="input" name="whatsapp" placeholder="+221 XX XXX XX XX" required>
         <div class="navigation">
-
-          <button type="button" class="btn btn-secondary prev">
-            ← Retour
-          </button>
-
-          <button type="button" class="btn btn-primary next">
-            Suivant →
-          </button>
-
+          <button type="button" class="btn btn-secondary prev">← Retour</button>
+          <button type="button" class="btn btn-primary next">Suivant →</button>
         </div>
-
       </section>
 
-      <!-- Q4 -->
       <section class="screen" data-step="4">
-
         <div class="question-number">Question 4</div>
-
-        <h2 class="question-title">
-          Êtes-vous propriétaire ou chauffeur ?
-        </h2>
-
+        <h2 class="question-title">Êtes-vous propriétaire ou chauffeur ?</h2>
         <div class="choices">
-
           <div class="choice">
-            <input
-              type="radio"
-              name="statut"
-              id="proprietaire"
-              value="Propriétaire"
-              required
-            >
-
-            <label for="proprietaire">
-              Propriétaire
-              <span class="badge">A</span>
-            </label>
+            <input type="radio" name="statut" id="proprietaire" value="Propriétaire" required>
+            <label for="proprietaire">Propriétaire <span class="badge">A</span></label>
           </div>
-
           <div class="choice">
-            <input
-              type="radio"
-              name="statut"
-              id="chauffeur"
-              value="Chauffeur"
-            >
-
-            <label for="chauffeur">
-              Chauffeur
-              <span class="badge">B</span>
-            </label>
+            <input type="radio" name="statut" id="chauffeur" value="Chauffeur">
+            <label for="chauffeur">Chauffeur <span class="badge">B</span></label>
           </div>
-
         </div>
-
         <div class="navigation">
-
-          <button type="button" class="btn btn-secondary prev">
-            ← Retour
-          </button>
-
-          <button type="button" class="btn btn-primary next">
-            Suivant →
-          </button>
-
+          <button type="button" class="btn btn-secondary prev">← Retour</button>
+          <button type="button" class="btn btn-primary next">Suivant →</button>
         </div>
-
       </section>
 
-      <!-- Q5 -->
       <section class="screen" data-step="5">
-
         <div class="question-number">Question 5</div>
-
-        <h2 class="question-title">
-          Combien de camions disposez-vous ?
-        </h2>
-
-        <input
-          type="number"
-          class="input"
-          name="nombre_camions"
-          placeholder="Ex: 12"
-        >
-
+        <h2 class="question-title">Combien de camions disposez-vous ?</h2>
+        <input type="number" class="input" name="nombre_camions" placeholder="Ex: 12">
         <div class="navigation">
-
-          <button type="button" class="btn btn-secondary prev">
-            ← Retour
-          </button>
-
-          <button type="button" class="btn btn-primary next">
-            Suivant →
-          </button>
-
+          <button type="button" class="btn btn-secondary prev">← Retour</button>
+          <button type="button" class="btn btn-primary next">Suivant →</button>
         </div>
-
       </section>
 
-      <!-- Q6 -->
       <section class="screen" data-step="6">
-
         <div class="question-number">Question 6</div>
-
-        <h2 class="question-title">
-          Quel type de véhicule utilisez-vous ?
-        </h2>
-
+        <h2 class="question-title">Quel type de véhicule utilisez-vous ?</h2>
         <div class="choices">
-
           <div class="choice">
-            <input
-              type="radio"
-              name="type_vehicule"
-              id="solo"
-              value="Camion Solo"
-              required
-            >
-
-            <label for="solo">
-              Camion Solo
-              <span class="badge">A</span>
-            </label>
+            <input type="radio" name="type_vehicule" id="solo" value="Camion Solo" required>
+            <label for="solo">Camion Solo <span class="badge">A</span></label>
           </div>
-
           <div class="choice">
-            <input
-              type="radio"
-              name="type_vehicule"
-              id="semi"
-              value="Camion Semi"
-            >
-
-            <label for="semi">
-              Camion Semi
-              <span class="badge">B</span>
-            </label>
+            <input type="radio" name="type_vehicule" id="semi" value="Camion Semi">
+            <label for="semi">Camion Semi <span class="badge">B</span></label>
           </div>
-
         </div>
-
         <div class="navigation">
-
-          <button type="button" class="btn btn-secondary prev">
-            ← Retour
-          </button>
-
-          <button type="button" class="btn btn-primary next">
-            Suivant →
-          </button>
-
+          <button type="button" class="btn btn-secondary prev">← Retour</button>
+          <button type="button" class="btn btn-primary next">Suivant →</button>
         </div>
-
       </section>
 
-      <!-- Q7 -->
       <section class="screen" data-step="7">
-
         <div class="question-number">Question 7</div>
-
-        <h2 class="question-title">
-          Type de semi
-        </h2>
-
+        <h2 class="question-title">Type de semi</h2>
         <div class="checkbox-grid">
-
           <div class="choice">
             <input type="checkbox" name="type_semi[]" id="plateau" value="Plateau">
-            <label for="plateau">
-              Plateau
-              <span class="badge">1</span>
-            </label>
+            <label for="plateau">Plateau <span class="badge">1</span></label>
           </div>
-
           <div class="choice">
             <input type="checkbox" name="type_semi[]" id="benne" value="Benne">
-            <label for="benne">
-              Benne
-              <span class="badge">2</span>
-            </label>
+            <label for="benne">Benne <span class="badge">2</span></label>
           </div>
-
           <div class="choice">
             <input type="checkbox" name="type_semi[]" id="citerne" value="Citerne">
-            <label for="citerne">
-              Citerne
-              <span class="badge">3</span>
-            </label>
+            <label for="citerne">Citerne <span class="badge">3</span></label>
           </div>
-
           <div class="choice">
             <input type="checkbox" name="type_semi[]" id="calabraise" value="Calabraise/ridelle">
-            <label for="calabraise">
-              Calabraise / ridelle
-              <span class="badge">4</span>
-            </label>
+            <label for="calabraise">Calabraise / ridelle <span class="badge">4</span></label>
           </div>
-
           <div class="choice">
             <input type="checkbox" name="type_semi[]" id="portechar" value="Porte-char">
-            <label for="portechar">
-              Porte-char
-              <span class="badge">5</span>
-            </label>
+            <label for="portechar">Porte-char <span class="badge">5</span></label>
           </div>
-
         </div>
-
         <div class="navigation">
-
-          <button type="button" class="btn btn-secondary prev">
-            ← Retour
-          </button>
-
-          <button type="button" class="btn btn-primary next">
-            Suivant →
-          </button>
-
+          <button type="button" class="btn btn-secondary prev">← Retour</button>
+          <button type="button" class="btn btn-primary next">Suivant →</button>
         </div>
-
       </section>
 
-      <!-- Q8 -->
       <section class="screen" data-step="8">
-
         <div class="question-number">Question 8</div>
-
-        <h2 class="question-title">
-          Quel est votre tonnage transportable ?
-        </h2>
-
-        <input
-          type="text"
-          class="input"
-          name="tonnage_transportable"
-          placeholder="Ex: 35 tonnes"
-          required
-        >
-
+        <h2 class="question-title">Quel est votre tonnage transportable ?</h2>
+        <input type="text" class="input" name="tonnage_transportable" placeholder="Ex: 35 tonnes" required>
         <div class="navigation">
-
-          <button type="button" class="btn btn-secondary prev">
-            ← Retour
-          </button>
-
-          <button type="button" class="btn btn-primary next">
-            Suivant →
-          </button>
-
+          <button type="button" class="btn btn-secondary prev">← Retour</button>
+          <button type="button" class="btn btn-primary next">Suivant →</button>
         </div>
-
       </section>
 
-      <!-- Q9 -->
       <section class="screen" data-step="9">
-
         <div class="question-number">Question 9</div>
-
-        <h2 class="question-title">
-          Quelle est votre zone d’opération ?
-        </h2>
-
+        <h2 class="question-title">Quelle est votre zone d’opération ?</h2>
         <div class="checkbox-grid">
-
-          <!-- TOUR DE VILLE -->
           <div class="choice">
-            <input
-              type="checkbox"
-              id="tourVille"
-              name="zone_operation[]"
-              value="Tour de ville"
-            >
-
-            <label for="tourVille">
-              Tour de ville
-              <span class="badge">1</span>
-            </label>
+            <input type="checkbox" id="tourVille" name="zone_operation[]" value="Tour de ville">
+            <label for="tourVille">Tour de ville <span class="badge">1</span></label>
           </div>
-
           <div class="dynamic-group" id="tourVilleGroup">
-
-            <input
-              type="text"
-              class="input"
-              name="ville_tournee"
-              placeholder="Mentionnez la ville"
-            >
-
+            <input type="text" class="input" name="ville_tournee" placeholder="Mentionnez la ville">
           </div>
 
-          <!-- PAYS -->
           <div class="choice">
-            <input
-              type="checkbox"
-              id="dansPays"
-              name="zone_operation[]"
-              value="Dans le Pays"
-            >
-
-            <label for="dansPays">
-              Dans le Pays
-              <span class="badge">2</span>
-            </label>
+            <input type="checkbox" id="dansPays" name="zone_operation[]" value="Dans le Pays">
+            <label for="dansPays">Dans le Pays <span class="badge">2</span></label>
           </div>
-
           <div class="dynamic-group" id="dansPaysGroup">
-
-            <input
-              type="text"
-              class="input"
-              name="villes_operation"
-              placeholder="Listez les différentes villes où vous opérez"
-            >
-
+            <input type="text" class="input" name="villes_operation" placeholder="Listez les différentes villes où vous opérez">
           </div>
 
-          <!-- SOUS REGION -->
           <div class="choice">
-            <input
-              type="checkbox"
-              id="sousRegion"
-              name="zone_operation[]"
-              value="Sous-région"
-            >
-
-            <label for="sousRegion">
-              Sous-région
-              <span class="badge">3</span>
-            </label>
+            <input type="checkbox" id="sousRegion" name="zone_operation[]" value="Sous-région">
+            <label for="sousRegion">Sous-région <span class="badge">3</span></label>
           </div>
-
           <div class="dynamic-group" id="sousRegionGroup">
-
-            <input
-              type="text"
-              class="input"
-              name="corridors"
-              placeholder="Listez vos corridors"
-            >
-
+            <input type="text" class="input" name="corridors" placeholder="Listez vos corridors">
           </div>
-
         </div>
-
         <div class="navigation">
-
-          <button type="button" class="btn btn-secondary prev">
-            ← Retour
-          </button>
-
-          <button
-            type="submit"
-            class="btn btn-primary"
-            id="submitBtn"
-          >
-            Envoyer →
-          </button>
-
+          <button type="button" class="btn btn-secondary prev">← Retour</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Envoyer →</button>
         </div>
-
       </section>
-
     </form>
 
-    <!-- SUCCESS -->
     <section class="screen success" id="successScreen">
-
       <div class="success-icon">
-
         <svg viewBox="0 0 24 24">
           <path d="M9 16.2l-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5z"/>
         </svg>
-
       </div>
-
-      <img
-        src="assets/logo-wakeve.png"
-        alt="Wakëvé"
-        style="width:140px;margin-bottom:28px;"
-      >
-
-      <h2 class="success-title">
-        Merci !
-      </h2>
-
-      <p class="success-text">
-        Vos informations ont bien été transmises.<br><br>
-        Délai de prise en charge 30 à 120 minutes.
-      </p>
-
+      <img src="assets/logo-wakeve.png" alt="Wakëvé" style="width:140px;margin-bottom:28px;">
+      <h2 class="success-title">Merci !</h2>
+      <p class="success-text">Vos informations ont bien été transmises.<br><br>Délai de prise en charge 30 à 120 minutes.</p>
     </section>
 
   </div>
-
 </div>
 
 <script>
-
-  // =========================
-  // CONFIG
-  // =========================
-  const FORM_ENDPOINT =
-    "https://formspree.io/f/xqejzjzl";
-
-  const screens =
-    [...document.querySelectorAll(".screen")];
-
-  const progressBar =
-    document.getElementById("progressBar");
-
-  const progressText =
-    document.getElementById("progressText");
-
-  const form =
-    document.getElementById("form");
-
-  const successScreen =
-    document.getElementById("successScreen");
-
+  const FORM_ENDPOINT = "https://formspree.io/f/xqejzjzl";
+  const screens = [...document.querySelectorAll(".screen")];
+  const progressBar = document.getElementById("progressBar");
+  const progressText = document.getElementById("progressText");
+  const form = document.getElementById("form");
+  const successScreen = document.getElementById("successScreen");
   let currentStep = 0;
 
   const flow = [
@@ -966,135 +646,78 @@
     "9"
   ];
 
-  // =========================
-  // SHOW STEP
-  // =========================
   function showStep(index){
-
     screens.forEach(screen=>{
       screen.classList.remove("active");
     });
 
-    const target =
-      screens.find(
-        s=>s.dataset.step===flow[index]
-      );
-
+    const target = screens.find(s=>s.dataset.step===flow[index]);
     if(target){
       target.classList.add("active");
+      // Scroll automatique en haut de l'écran lors du changement d'étape pour le mobile
+      target.scrollTop = 0;
     }
 
     currentStep = index;
-
     updateProgress();
 
     setTimeout(()=>{
-      const input =
-        target?.querySelector("input");
-
+      const input = target?.querySelector("input");
       if(input){
         input.focus();
       }
     },100);
   }
 
-  // =========================
-  // PROGRESS
-  // =========================
   function updateProgress(){
-
     if(currentStep===0){
-
       progressText.innerText="Accueil";
       progressBar.style.width="0%";
       return;
     }
-
     const total = 9;
-
-    const percent =
-      (currentStep/total)*100;
-
-    progressBar.style.width =
-      percent+"%";
-
-    progressText.innerText =
-      `Question ${currentStep} sur ${total}`;
+    const percent = (currentStep/total)*100;
+    progressBar.style.width = percent+"%";
+    progressText.innerText = `Question ${currentStep} sur ${total}`;
   }
 
-  // =========================
-  // VALIDATION
-  // =========================
   function validateCurrent(){
-
-    const active =
-      document.querySelector(".screen.active");
-
-    const requiredFields =
-      active.querySelectorAll("[required]");
+    const active = document.querySelector(".screen.active");
+    const requiredFields = active.querySelectorAll("[required]");
 
     for(const field of requiredFields){
-
       if(field.type==="radio"){
-
-        const group =
-          active.querySelectorAll(
-            `input[name="${field.name}"]`
-          );
-
-        const checked =
-          [...group].some(r=>r.checked);
-
+        const group = active.querySelectorAll(`input[name="${field.name}"]`);
+        const checked = [...group].some(r=>r.checked);
         if(!checked){
           return false;
         }
-
       }else{
-
         if(!field.value.trim()){
           field.focus();
           return false;
         }
       }
     }
-
     return true;
   }
 
-  // =========================
-  // NEXT
-  // =========================
   function nextStep(){
-
     if(currentStep!==0 && !validateCurrent()){
       return;
     }
 
-    // CONDITION 1
     if(flow[currentStep]==="4"){
-
-      const statut =
-        document.querySelector(
-          'input[name="statut"]:checked'
-        );
-
+      const statut = document.querySelector('input[name="statut"]:checked');
       if(statut?.value==="Chauffeur"){
-
         showStep(6);
         return;
       }
     }
 
-    // CONDITION 2
     if(flow[currentStep]==="6"){
-
-      const vehicule =
-        document.querySelector(
-          'input[name="type_vehicule"]:checked'
-        );
-
+      const vehicule = document.querySelector('input[name="type_vehicule"]:checked');
       if(vehicule?.value==="Camion Solo"){
-
         showStep(8);
         return;
       }
@@ -1105,34 +728,18 @@
     }
   }
 
-  // =========================
-  // PREVIOUS
-  // =========================
   function prevStep(){
-
     if(flow[currentStep]==="6"){
-
-      const statut =
-        document.querySelector(
-          'input[name="statut"]:checked'
-        );
-
+      const statut = document.querySelector('input[name="statut"]:checked');
       if(statut?.value==="Chauffeur"){
-
         showStep(4);
         return;
       }
     }
 
     if(flow[currentStep]==="8"){
-
-      const vehicule =
-        document.querySelector(
-          'input[name="type_vehicule"]:checked'
-        );
-
+      const vehicule = document.querySelector('input[name="type_vehicule"]:checked');
       if(vehicule?.value==="Camion Solo"){
-
         showStep(6);
         return;
       }
@@ -1143,202 +750,99 @@
     }
   }
 
-  // =========================
-  // EVENTS
-  // =========================
-  document
-    .getElementById("startBtn")
-    .addEventListener("click",()=>{
-      showStep(1);
-    });
+  document.getElementById("startBtn").addEventListener("click",()=>{
+    showStep(1);
+  });
 
-  document
-    .querySelectorAll(".next")
-    .forEach(btn=>{
-      btn.addEventListener("click",nextStep);
-    });
+  document.querySelectorAll(".next").forEach(btn=>{
+    btn.addEventListener("click",nextStep);
+  });
 
-  document
-    .querySelectorAll(".prev")
-    .forEach(btn=>{
-      btn.addEventListener("click",prevStep);
-    });
+  document.querySelectorAll(".prev").forEach(btn=>{
+    btn.addEventListener("click",prevStep);
+  });
 
-  // =========================
-  // KEYBOARD
-  // =========================
   document.addEventListener("keydown",(e)=>{
-
-    const active =
-      document.querySelector(".screen.active");
-
+    const active = document.querySelector(".screen.active");
     if(e.key==="Enter"){
-
-      if(active.dataset.step!=="9"){
+      if(active.dataset.step!=="9" && e.target.tagName !== "TEXTAREA"){
         e.preventDefault();
         nextStep();
       }
     }
   });
 
-  // =========================
-  // AUTO NEXT RADIO
-  // =========================
-  document
-    .querySelectorAll('input[type="radio"]')
-    .forEach(radio=>{
-
-      radio.addEventListener("change",()=>{
-
-        setTimeout(()=>{
-          nextStep();
-        },250);
-
-      });
-
+  document.querySelectorAll('input[type="radio"]').forEach(radio=>{
+    radio.addEventListener("change",()=>{
+      setTimeout(()=>{
+        nextStep();
+      },250);
     });
+  });
 
-  // =========================
-  // DYNAMIC ZONES
-  // =========================
-  const tourVille =
-    document.getElementById("tourVille");
+  const tourVille = document.getElementById("tourVille");
+  const dansPays = document.getElementById("dansPays");
+  const sousRegion = document.getElementById("sousRegion");
+  const tourVilleGroup = document.getElementById("tourVilleGroup");
+  const dansPaysGroup = document.getElementById("dansPaysGroup");
+  const sousRegionGroup = document.getElementById("sousRegionGroup");
 
-  const dansPays =
-    document.getElementById("dansPays");
-
-  const sousRegion =
-    document.getElementById("sousRegion");
-
-  const tourVilleGroup =
-    document.getElementById("tourVilleGroup");
-
-  const dansPaysGroup =
-    document.getElementById("dansPaysGroup");
-
-  const sousRegionGroup =
-    document.getElementById("sousRegionGroup");
-
-  function toggleDynamicField(
-    checkbox,
-    group
-  ){
-
-    const input =
-      group.querySelector("input");
-
+  function toggleDynamicField(checkbox, group){
+    const input = group.querySelector("input");
     if(checkbox.checked){
-
       group.classList.add("active");
       input.required = true;
-
     }else{
-
       group.classList.remove("active");
       input.required = false;
       input.value = "";
     }
   }
 
-  tourVille.addEventListener("change",()=>{
-    toggleDynamicField(
-      tourVille,
-      tourVilleGroup
-    );
-  });
+  tourVille.addEventListener("change",()=>{ toggleDynamicField(tourVille, tourVilleGroup); });
+  dansPays.addEventListener("change",()=>{ toggleDynamicField(dansPays, dansPaysGroup); });
+  sousRegion.addEventListener("change",()=>{ toggleDynamicField(sousRegion, sousRegionGroup); });
 
-  dansPays.addEventListener("change",()=>{
-    toggleDynamicField(
-      dansPays,
-      dansPaysGroup
-    );
-  });
-
-  sousRegion.addEventListener("change",()=>{
-    toggleDynamicField(
-      sousRegion,
-      sousRegionGroup
-    );
-  });
-
-  // =========================
-  // SUBMIT
-  // =========================
   form.addEventListener("submit",async(e)=>{
-
     e.preventDefault();
-
     if(!validateCurrent()){
       return;
     }
 
-    const submitBtn =
-      document.getElementById("submitBtn");
-
-    submitBtn.innerText =
-      "Envoi en cours...";
-
+    const submitBtn = document.getElementById("submitBtn");
+    submitBtn.innerText = "Envoi en cours...";
     submitBtn.disabled = true;
 
-    const formData =
-      new FormData(form);
+    const formData = new FormData(form);
 
     try{
-
-      const response =
-        await fetch(FORM_ENDPOINT,{
-
-          method:"POST",
-          body:formData,
-
-          headers:{
-            "Accept":"application/json"
-          }
-        });
+      const response = await fetch(FORM_ENDPOINT,{
+        method:"POST",
+        body:formData,
+        headers:{ "Accept":"application/json" }
+      });
 
       if(response.ok){
-
         screens.forEach(screen=>{
           screen.classList.remove("active");
         });
-
         form.style.display="none";
-
         successScreen.classList.add("active");
-
         progressBar.style.width="100%";
-
-        progressText.innerText =
-          "Terminé";
-
+        progressText.innerText = "Terminé";
       }else{
-
-        alert(
-          "Une erreur est survenue."
-        );
-
-        submitBtn.innerText =
-          "Envoyer →";
-
+        alert("Une erreur est survenue.");
+        submitBtn.innerText = "Envoyer →";
         submitBtn.disabled = false;
       }
-
     }catch(error){
-
-      alert(
-        "Impossible d’envoyer le formulaire."
-      );
-
-      submitBtn.innerText =
-        "Envoyer →";
-
+      alert("Impossible d’envoyer le formulaire.");
+      submitBtn.innerText = "Envoyer →";
       submitBtn.disabled = false;
     }
-
   });
 
   updateProgress();
-
 </script>
 
 </body>
